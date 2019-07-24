@@ -9,27 +9,32 @@
 #include <time.h>
 
 #define ROOT_PATH "/boards"
-#define DEVICE_PIN_14 14 //D5
-#define DEVICE_PIN_12 12 //D6
-#define DEVICE_PIN_13 13 //D7
+#define SENSOR_READ_PIN_12 12 //D6
+#define SENSOR_WRITE_PIN_13 13 //D7
 #define MAXIMUM_NUMBER_SETTING 10
 class DeviceService {
+  private:
+      bool pulseFlag = true;
   public:
       /*
        * setup the initial state of device's PIN
        */
       void setup();
-      
       /**
-       * set board's state with a setting from FireBase
+       * detect obstacle and write data to FireBase
        */
       void handleObstacle(String macAddressStr);
+      
+      bool isNewObstacle(bool obstacle);
+      
+      void updateFirebase(String macAddressStr);
 
       String getCurrentTime();
       /**
        * clear all output Pins (4, 12, 13, 14)
        */
-       void clearAllOutputPins();
+      void clearAllOutputPins();
+
 };
 
 extern DeviceService deviceService;

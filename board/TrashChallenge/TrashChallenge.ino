@@ -29,24 +29,21 @@ void loop() {
       ESP.restart();
     }
 
-    if(!wifiConnection.isConnected()) {
-      delay(2000);
-      deviceService.clearAllOutputPins();
-      delay(1000);
-      return;
-    }
+//    if(!wifiConnection.isConnected()) {
+//      delay(2000);
+//      deviceService.clearAllOutputPins();
+//      delay(1000);
+//      return;
+//    }
     
-    if(!fireBaseConnection.isConnected(connectedTime, deviceService.getCurrentTime())) {
-      delay(2000);
-      deviceService.clearAllOutputPins();
-      delay(1000);
-      return;
-    }
+//    if(!fireBaseConnection.isConnected(connectedTime, deviceService.getCurrentTime())) {
+//      delay(2000);
+//      deviceService.clearAllOutputPins();
+//      delay(1000);
+//      return;
+//    }
 
-    fireBaseConnection.clearResetFlag(resetPath);
+  //  fireBaseConnection.clearResetFlag(resetPath);
     deviceService.handleObstacle(wifiConnection.getMacString());
-    delay(500);
+    delay(10);
 }
-
-
-

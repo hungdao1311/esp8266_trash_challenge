@@ -23,15 +23,10 @@ bool FireBaseConnection::isConnected(String lastTimePath, String curTime) {
     }
 
     digitalWrite(FIREBASE_STATUS_LED, HIGH);
-    delay(500);
+    delay(100);
     Serial.println("Firebase Connected.");
     return true;
 }
-
-FirebaseObject FireBaseConnection::getDevicesConfig(String path){
-    Serial.println("Getting devices setting...");
-    return Firebase.get(path);
-};
 
 void FireBaseConnection::storeResetFlag(String path){
   Firebase.setBool(path, true);
